@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Reset password</title>
+  <!-- <link rel="stylesheet" href="/css/styles7.css"> -->
+    <link rel="stylesheet" href="/css/style.css">
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+</head>
+
+<body style="background-image:url(/images/img1.jpg);">
+  <div class="head">
+    <img id="logo" src="/images1/GPA LOGO.png" alt="">
+    <div class="title">
+      <h1 style="font-size:27px;font-weight: 800" ;>Government Polytechnic Chhatrapati Sambhajinagr<br>
+        <span style="font-size:32px" ;> </span>&nbspChhatrapati Sambhajinagr(GPS) 431001</h1>
+      <h3 style="font-size:22px" ;> Public Grievance Redress and Monitoring System(PGRAMS)</h3>
+    </div>
+    <img id="clg" src="/images1/Clgpic1.jpg" alt="">
+  </div>
+    <div class="home">
+      <a href="/">HOME</a>
+      <a href="/about" class="nav">ABOUT US</a>
+        <a href="/contact" class="nav">CONTACT US</a>
+        <a style="width:200px;" href="https://gpabad.ac.in/">GPS Website</a>
+      </div>
+
+    <div class="div1">
+      
+      <h1 id="heading" class="heading1">
+        RESET PASSWORD
+      </h1>
+      <div><% if(message.length > 0){ %> 
+      <div class="alert alert-warning">
+        <%= message %> 
+      </div>
+    <% } %> </div>
+      <form action="" method="post">
+        <div class="main">
+            <p> New password</p>
+            <h4 >(&nbspNOTE: Password must contain  at least 8 characters, including UPPER/lowercase, one special character and numbers.&nbsp) </h4>
+            <div class="container">
+
+              <div class="field">
+                 <input onkeyup="trigger()" type="password" name="newpassword" placeholder="Type password">
+                 <span class="showBtn">SHOW</span>
+              </div>
+              <div class="indicator">
+                 <span class="weak"></span>
+                 <span class="medium"></span>
+                 <span class="strong"></span>
+              </div>
+              <div class="text"></div>
+
+        </div>
+          <p>Confirm New password</p>
+        <input type="password" name="confirmNewpassword" placeholder="Confirm password">
+        <br>
+        </div>
+        <div class="div2">
+          <button type="submit" name="submit">Update</button>
+        </div>
+   
+      <div class="bottom">
+        <p class="para">
+          Back To
+        <a href="/login">User login</a>
+      </p>
+      </div>
+    </form>
+    </div>
+    <footer>
+      <p>
+        <a href="https://gpabad.ac.in/terms-and-conditions/">Help</a>
+        <a href="https://gpabad.ac.in/web-policy/">Website Policies</a>
+        <a href="https://gpabad.ac.in/copyright-policy/">Copyrights Policy</a>
+        <a href="https://gpabad.ac.in/terms-and-conditions/">Terms & Conditions</a>
+        <a href="https://gpabad.ac.in/about-insitute/">About</a>
+       
+      </p>
+      <p>Website owned & maintained by: Government Polytechnic Chhatrapati Sambhajinagr(GPS)-431001</p>
+      <p>© 2022 GPS. All rights reserved, Last Updated: Monday, December 26, 2022</p>
+    </footer>
+    <script type="text/javascript">
+
+      const indicator = document.querySelector(".indicator");
+      const input = document.querySelector("input");
+      const weak = document.querySelector(".weak");
+      const medium = document.querySelector(".medium");
+      const strong = document.querySelector(".strong");
+      const text = document.querySelector(".text");
+      const showBtn = document.querySelector(".showBtn");
+      let regExpWeak = /[a-z]/;
+      let regExpMedium = /\d+/;
+      let regExpStrong = /.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/;
+      function trigger(){
+        if(input.value != ""){
+          indicator.style.display = "block";
+          indicator.style.display = "flex";
+          if(input.value.length <= 3 && (input.value.match(regExpWeak) || input.value.match(regExpMedium) || input.value.match(regExpStrong)))no=1;
+          if(input.value.length >= 6 && ((input.value.match(regExpWeak) && input.value.match(regExpMedium)) || (input.value.match(regExpMedium) && input.value.match(regExpStrong)) || (input.value.match(regExpWeak) && input.value.match(regExpStrong))))no=2;
+          if(input.value.length >= 6 && input.value.match(regExpWeak) && input.value.match(regExpMedium) && input.value.match(regExpStrong))no=3;
+          if(no==1){
+            weak.classList.add("active");
+            text.style.display = "block";
+            text.textContent = "Your password is too week";
+            text.classList.add("weak");
+          }
+          if(no==2){
+            medium.classList.add("active");
+            text.textContent = "Your password is medium";
+            text.classList.add("medium");
+          }else{
+            medium.classList.remove("active");
+            text.classList.remove("medium");
+          }
+          if(no==3){
+            weak.classList.add("active");
+            medium.classList.add("active");
+            strong.classList.add("active");
+            text.textContent = "Your password is strong";
+            text.classList.add("strong");
+          }else{
+            strong.classList.remove("active");
+            text.classList.remove("strong");
+          }
+          showBtn.style.display = "block";
+          showBtn.onclick = function(){
+            if(input.type == "password"){
+              input.type = "text";
+              showBtn.textContent = "HIDE";
+              showBtn.style.color = "#23ad5c";
+            }else{
+              input.type = "password";
+              showBtn.textContent = "SHOW";
+              showBtn.style.color = "#000";
+            }
+          }
+        }else{
+          indicator.style.display = "none";
+          text.style.display = "none";
+          showBtn.style.display = "none";
+        }
+      }
+   </script>
+</body>
+
+</html>

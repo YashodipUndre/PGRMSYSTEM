@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List of publiuc grievance technicians</title>
+  <link rel="stylesheet" href="/css/officialdetails.css">
+  <link rel="stylesheet" href="/css/homepage.css">
+  <!-- <link rel="stylesheet" href="/css/homepage.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+  <div class="top-container">
+    <div class="head">
+      <img id="logo" src="/images1/GPA LOGO.png" alt="">
+      <div class="title">
+        <h1 style="font-size:27px;font-weight: 800" ;>Government Polytechnic Chhatrapati Sambhajinagr<br>
+          <span style="font-size:32px" ;> </span>&nbspChhatrapati Sambhajinagr(GPS) 431001</h1>
+        <h3 style="font-size:22px" ;> Public Grievance Redress and Monitoring System(PGRAMS)</h3>
+      </div>
+      <img id="clg" src="/images1/Clgpic1.jpg" alt="">
+    </div>
+    <div class="nav">
+      <a href="/"><i class="bi bi-house"></i>&nbsp Home</a>
+      <div class="dropdowna">
+        <button class="dropbtna"><i class="fa-solid fa-users-gear"></i>&nbsp PGRAMS Officers
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-contenta">
+          <a href="/offHome">Assigning officers</a>
+          <a href="/techHome">Technicians</a>
+        </div>
+      </div>
+      <a href="/status"><i class="bi bi-search"></i>&nbsp View Status</a>
+      <a href="/about"><i class="bi bi-file-earmark-person-fill"></i>&nbsp About</a>
+      <a href="/contact"><i class="bi bi-person-lines-fill"></i>&nbsp Contact</a>
+      <a href="https://gpabad.ac.in/">GPA Website</a>
+      <a href="/login" class="sign" style="font-size:20px;font-weight:800";> <i
+          class="fa-solid fa-right-to-bracket"></i>&nbsp Sign In</a>
+      <!-- <a href="#"><i class="fa fa-fw fa-user"></i> About</a> -->
+    </div>
+  <div class="middle-container">
+    <div class="top">
+      CONTACT DETAILS TECHNICIANS
+    </div>
+    <div class="TABLE">
+      <table class="table dataTable">
+        <tr>
+          <th>S.NO.</th>
+          <th>Name of the Officer</th>
+          <th>Department</th>
+          <th>Phone NO.</th>
+          <th>Email</th>
+        </tr>
+        <% var count = 0 %>
+        <% user.forEach((item)=>{count++%>
+        <tr>
+          <td><%= count %> .</td>
+          <td><%= item.firstName %> <%= item.lastName %></td>
+          <td><%= item.skills %> </td>
+          <td><%= item.mobile %> </td>
+          <td><%= item.username %> </td>
+        </tr>
+        <%}); %>
+      </table>
+    </div>
+  </div>
+  <footer>
+    <p><br>
+      <a href="https://gpabad.ac.in/terms-and-conditions/">Help</a>
+      <a href="https://gpabad.ac.in/web-policy/">Website Policies</a>
+      <a href="https://gpabad.ac.in/copyright-policy/">Copyrights Policy</a>
+      <a href="https://gpabad.ac.in/terms-and-conditions/">Terms & Conditions</a>
+      <a href="https://gpabad.ac.in/about-insitute/">About</a>
+     
+    </p><br>
+    <p>Website owned & maintained by: Government Polytechnic Chhatrapati Sambhajinagr(GPS)-431001</p><br>
+    <p>© 2022 GPS. All rights reserved, Last Updated: Monday, December 26, 2022</p>
+  </footer>
+  
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/tech.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+
+<!-- <body style="background-image:url(/images/img1.jpg);"> -->
+
+<body>
+  <div class="head">
+    <img id="logo" src="/images1/GPA LOGO.png" alt="">
+    <div class="title">
+      <h1 style="font-size:27px;font-weight: 800" ;>Government Polytechnic Chhatrapati Sambhajinagr<br>
+        <span style="font-size:32px" ;> </span>&nbspChhatrapati Sambhajinagr(GPS) 431001</h1>
+      <h3 style="font-size:22px" ;> Public Grievance Redress and Monitoring System(PGRAMS)</h3>
+    </div>
+    <img id="clg" src="/images1/Clgpic1.jpg" alt="">
+  </div>
+
+  <div class="nav">
+    <a href="/"><i class="bi bi-house"></i>&nbsp Home</a>
+    <div class="dropdown">
+      <button class="dropbtn"><i class="fa-solid fa-users-gear"></i>&nbsp PGRAMS Officers
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/offHome">Assigning officers</a>
+        <a href="/techHome">Technicians</a>
+      </div>
+    </div>
+    <a href="/about"><i class="bi bi-file-earmark-person-fill"></i>&nbsp About</a>
+    <a href="/contact"><i class="bi bi-person-lines-fill"></i>&nbsp Contact</a>
+    <a href="https://gpabad.ac.in/">GPS Website</a>
+    <div class="dropdown">
+      <button class="dropbtn" style="padding-right:60px;"><i class="fa-solid fa-bars"></i>
+        More
+      </button>
+        <div class="dropdown-content">
+          <button><a class="a" href="/<%= user.username %>/profile"><iclass="bi bi-person-fill"></iclass=> My profile</a></button>
+          <a href="/logout"><i class="bi bi-box-arrow-right"></i>&nbsp Logout</a>
+        </div>
+    </div>
+  </div>
+  <% if(message.length > 0){ %>
+  <div class="alert">
+    <%= message %>
+  </div>
+  <% } %>
+
+  <div class="middlecontainer">
+    <div id="main2">
+      <div id="top">
+        <button id="topone">Assigned complaints</button>
+        <button id="toptwo">Accepted Complaints</button>
+      </div>
+
+
+
+      <!-- start of center1 -->
+      <div class="center1" id="center1">
+        <% complaint.forEach((item)=>{if((user.username === item.assignedTo && item.acceptedBytech=="no"
+         && item.rejectedByTech=="no")||(user.username === item.reassignedTo && item.progress=="complaint has been reassigned")){%>
+
+
+
+        <ul id="ulcenter1">
+          <li class="listone">
+            <button onclick="openpopup(this)" class="view"><%= item.complaint %> <p>
+                (<%= item.date.toString().substring(0,15) %>)</p></button>
+            <div class="popup">
+              <h2><%= item.subject %> </h2>
+              <p><b>Date &Time of Registration:</b>&nbsp;&nbsp;<%= item.date.toString().substring(0,21) %></p>
+              <p><b>Area:</b> &nbsp;&nbsp; <%= item.area %></p>
+              <p><b>Hostel Name:</b>&nbsp;&nbsp; <%= item.building %> </p>
+              <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
+              <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%= item.subject %></p>
+              <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
+              <p><b>Complaint Progress</b> &nbsp;&nbsp;<%= item.progress %></p>
+              <p><b>Photo of the complaint:</b> &nbsp;&nbsp;
+                <a href="/brokenImg/<%= item.brokenImg %>" download="<%= item._id %>"
+                  style="text-decoration: underline;">download Image here</a></p>
+              <button type="button" onclick="closepopup(this)">Ok</button>
+              <div class="btns-container">
+                <form action="/acceptByTech/<%= item._id %>" method="post" style="margin-top: 0.5rem;">
+                  <button type="submit">Accept</button>
+                </form>
+                
+                <form action="/rejectByTech/<%= item._id %>" method="post">
+                  <label for="rejecct" style="font-size:20px;">Give reason of rejection:</label>
+                  <select id="selectarea" name="whyRejetedBytech" class="select" id="reject">
+                    <option value="">select</option>
+                    <option value="">Can't come better to assign someone else</option>
+                    <option value="">Not within the Scope</option>
+                  </select>
+                  <button type="submit">Reject</button>
+                </form>
+
+              </div>
+            </div>
+          </li>
+        </ul>
+        <% }}); %>
+      </div>
+      <!-- end of center1 -->
+      <!-- start of center1 -->
+      <div class="center2" id="center2">
+        <% complaint.forEach((item)=>{if((user.username === item.assignedTo && item.acceptedBytech=="yes" 
+        && item.resolvedByTech == "no") || (user.username === item.reassignedTo && item.acceptedBytech=="yes" 
+        && item.resolvedByTech == "no")){%>
+
+        <ul id="ulcenter2">
+          <li class="listtwo">
+            <button onclick="openpopup2(this)" class="view"><%= item.complaint %><p>
+                (<%= item.date.toString().substring(0,15) %>)</p></button>
+            <div class="popup">
+              <h2><%= item.subject %> </h2>
+              <p><b>Date &Time of Registration:</b>&nbsp;&nbsp;<%= item.date.toString().substring(0,21) %></p>
+              <p><b>Area:</b> &nbsp;&nbsp; <%= item.area %></p>
+              <p><b>Hostel Name:</b>&nbsp;&nbsp; <%= item.building %> </p>
+              <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
+              <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%= item.subject %></p>
+              <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
+              <p><b>Complaint Progress</b> &nbsp;&nbsp;<%= item.progress %></p>
+              <p><b>Photo of the complaint:</b> &nbsp;&nbsp;
+                <a href="/brokenImg/<%= item.brokenImg %>" download="<%= item._id %>"
+                  style="text-decoration: underline;">download Image here</a></p>
+              <% if(item.issueImg && item.issue){ %>
+              <p style="color: crimson;"><b>Issue:</b> &nbsp;&nbsp;<%= item.issue %></p>
+              <p><b>Photo of the Issue:</b> &nbsp;&nbsp;
+                <a href="/issue/<%= item.issueImg %>" download="<%= item._id %>"
+                  style="text-decoration: underline;">download Image here</a>
+              </p>
+              <% } %>
+              <form action="/resolved/<%= item._id %>/<%= user.username %>" method="post" style="margin-top: 0.5rem;"
+                enctype="multipart/form-data">
+                <p><b>Upload Photo of Fixed Image:</b> &nbsp;&nbsp;<input type="file" name="fixedImg" id=""></p>
+                <input type="hidden" name="resolvedTime" id="">
+                <button type="submit">Resolved</button>
+              </form>
+              <button type="button" onclick="closepopup(this)" style="margin-top: 10px;">Ok</button>
+            </div>
+          </li>
+        </ul>
+        <% }}); %>
+      </div>
+      <!-- end of center 1 -->
+    </div>
+
+    <!-- end of center 1 -->
+  </div>
+  <footer>
+    <p><br>
+      <a href="https://gpabad.ac.in/terms-and-conditions/">Help</a>
+      <a href="https://gpabad.ac.in/web-policy/">Website Policies</a>
+      <a href="https://gpabad.ac.in/copyright-policy/">Copyrights Policy</a>
+      <a href="https://gpabad.ac.in/terms-and-conditions/">Terms & Conditions</a>
+      <a href="https://gpabad.ac.in/about-insitute/">About</a>
+     
+    </p><br>
+    <p>Website owned & maintained by: Government Polytechnic Chhatrapati Sambhajinagr(GPS)-431001</p><br>
+    <p>© 2022 GPS. All rights reserved, Last Updated: Monday, December 26, 2022</p>
+  </footer>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="/js/tech.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+</body>
+
+</html>
