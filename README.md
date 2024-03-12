@@ -114,7 +114,7 @@ complainant
 ● Citizen can reopen a complaint that has been resolved if he is not satisfied with the 
 resolution ● Citizen can rate a complaint after resolution 
  
-13
+
 5) Track Complaints
 
 This module enables the following capabilities to Track complaints: 
