@@ -30,7 +30,7 @@ citizens
 ● Login Credentials for the various hierarchies of employees 
 ● Role-based access for performing different actions relating to grievance redressal 
  
-Lodging a Complaint 
+1)Lodging a Complaint 
  
 The Citizen or Citizen Service Representative (CSR) on behalf of citizens can 
 lodge,civic works 
@@ -58,7 +58,7 @@ complaint type and the same is communicated to the citizen by SMS, Whatsapp,
 and / or email. 
 11
  
-Assigning a Complaint 
+2)Assigning a Complaint 
  
 Assigning officer has dashboard with unassigned complaints. Any complaint can be 
 selected to view details and expected closure timelines. Assigning officer can select and 
@@ -70,8 +70,11 @@ This module enables the following capabilities:
 ● Assigning Officer can also Re-assign complaints 
 ● If the employee: Type of complaint is pre-mapped, auto mapping of tickets to be 
 possible. 
+
  
-Resolving a Complaint 
+3) Resolving a Complaint 
+
+
 The Employee can view the complaints assigned to him on a dashboard with a 
 functionality to mark 
 them for closure. Employee can view details and closure timelines of the complaints from a 
@@ -83,7 +86,10 @@ and rate the resolution.
 This module enables the following capabilities: 
 ● Last Mile Employee can Add photograph and comments after resolution. 
 12
-Manage a Complaint 
+
+4)Manage a Complaint 
+
+
 Employee has access to the dashboard of open complaints from which he can select a 
 complaint to 
 view details and closure timelines. Employee can also request to reassign the complaint by 
@@ -109,7 +115,8 @@ complainant
 resolution ● Citizen can rate a complaint after resolution 
  
 13
-Track Complaints 
+5) Track Complaints
+
 This module enables the following capabilities to Track complaints: 
 ● Citizen can View all complaints filed - pending and completed 
 ● Citizen receives Notifications via App, SMS, email for complaint updates 
@@ -119,7 +126,7 @@ This module enables the following capabilities to Track complaints:
 Officer can Receive updates on complaints 
 Assigning Officer can Interact with Last Mile Employee (Call) 
  
-Dashboards and Reports 
+6) Dashboards and Reports 
  
 PGR Reports provide an operational bird’s eye view of the PGR system in the State. It 
 enables Department Heads, Administrators/GP/WUC at various levels to keep a track of the 
